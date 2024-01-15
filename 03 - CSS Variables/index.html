@@ -6,7 +6,7 @@
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
 <body>
-  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+  <h2><span class='hl'>Update CSS Variables with JS</span></h2>
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
@@ -19,10 +19,11 @@
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  <img src="images/waterfall.jpg" style="width:55%">
 
   <style>
     :root{
+      /* --headerColor:#ff6200; */
       --spacing: 10px;
       --base: #ffc600;
       --blur: 10px;
@@ -32,6 +33,10 @@
       padding: var(--spacing);
       background: var(--base);
       filter: blur(var(--blur));
+    }
+
+    .hl{
+      color: var(--base);
     }
 
     body {
@@ -58,10 +63,8 @@
       const unit = this.dataset.sizing || '';
       document.documentElement.style.setProperty(`--${this.name}`, this.value + unit);
     }
-
     elements.forEach(element => element.addEventListener('change', displayChange))
   </script>
 
 </body>
 </html>
-\
