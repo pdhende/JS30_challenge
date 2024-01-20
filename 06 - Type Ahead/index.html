@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+var searchInfo = [];
+
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+fetch(endpoint)
+  .then((response) => response.json())
+  .then((data) => {
+    searchInfo = data;
+  });
+
+function formatNum(number){
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+const getData = (event) => {
+  if(searchInfo.length !== 0){
+    const results = searchInfo.filter((item) => (item.city.includes(event.target.value) || item.state.includes(event.target.value)));
+    while(resultList.firstChild){
+      resultList.removeChild(resultList.firstChild);
+    }
+    results.forEach(value => {
+      const placeInfo = document.createElement('li');
+      const population = formatNum(value.population);
+      const displayVal = `<div>${value.city}, ${value.state}</div><div>${population}</div>`;
+      placeInfo.innerHTML = displayVal.replace(event.target.value, `<span class="hl">${event.target.value}</span>`);
+      resultList.appendChild(placeInfo);
+    });
+  }
+}
+
+const searchValue = document.querySelector('.search');
+const resultList = document.querySelector('.suggestions');
+searchValue.addEventListener('change', getData);
+
+</script>
+</body>
+</html>
