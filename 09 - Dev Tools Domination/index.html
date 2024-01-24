@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("This is a regular console.log!");
+
+    // Interpolated
+    console.log(`This challenge is awesome \u{1F525}`);
+
+    // Styled
+    console.log(`%c Learning some styling techniques as part of this challenge!`,`color:red; font-family: "Dancing Script", cursive;`);
+
+    // warning!
+    console.warn("This is a warning!");
+
+    // Error :|
+    console.error("This is an error.");
+
+    // Info
+    console.info("Fun fact : Coding is super fun!");
+
+    // Testing
+    const hugoInfo = dogs.filter(dog => dog.name === 'hugo');
+
+    console.assert(hugoInfo.age > 10, "Hugo is younger than 10");
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach((dog) => {
+      console.groupCollapsed(`${dog.name}`)
+      console.log(`This is ${dog.name}`)
+      console.log(`He is ${dog.age} years old`);
+      console.groupEnd(`$dog.name}`);
+    });
+
+    // counting
+    console.count("One");
+    console.count("Two");
+    console.count("Three");
+    console.count("Four");
+    console.count("Four");
+    console.count("Three");
+    console.count("Two");
+    console.count("Four");
+    console.count("Three");
+    console.count("Four");
+
+    // timing
+    console.time("The time taken to fetch data was");
+    fetch('https://api.github.com/orgs/nodejs/repos')
+    .then((results) => results.json())
+    .then((data) => {
+      console.timeEnd("The time taken to fetch data was");
+      console.log(data)
+    });
+  </script>
+</body>
+</html>
