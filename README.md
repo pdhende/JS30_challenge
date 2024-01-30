@@ -11,3 +11,4 @@ This repository contains challenges from JavaScript30 by  Wes Bos - @wesbos
 * Day 8: Fun with HTML5 Canvas
 * Day 9: Dev Tools Domination
 * Day 10: Hold Shift and Check Checkboxes
+* Day 11: Custom Video Player
